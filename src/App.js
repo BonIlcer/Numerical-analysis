@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from 'react-router-dom'
+import { Drawer, List, ListItem, ListItemText } from '@material-ui/core'
+
+import Lab1 from './pages/Lab1'
+import Lab2 from './pages/Lab2'
+import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path='/'>
+          <Redirect push to='/lab1' />
+        </Route>
+        <Route path='/lab1'>
+          <Lab1 />
+        </Route>
+        <Route path='/lab2'>
+          <Lab2 />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
-export default App;
+export default App
