@@ -1,6 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from 'react-router-dom'
-import { Drawer, List, ListItem, ListItemText } from '@material-ui/core'
-
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Lab1 from './pages/Lab1'
 import Lab2 from './pages/Lab2'
 import Navbar from './components/Navbar'
