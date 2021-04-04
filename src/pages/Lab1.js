@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, CircularProgress, Link } from '@material-ui/core'
+import { Box, Button, Link } from '@material-ui/core'
 import { determinant, inverseMatrix, multiplyMatrices, Matrix, InvM } from '../utils/matrix'
 import { parseMatrix } from '../utils/parseMatrix'
 
@@ -16,6 +16,7 @@ const Lab1 = () => {
   const [b, setB] = useState(initB)
   const [invA, setInvA] = useState(null)
   const [det, setDet] = useState(notCalculated)
+  const [precision, setPrecision] = useState(18)
 
   const reset = () => {
     setA(initA)
@@ -49,7 +50,7 @@ const Lab1 = () => {
       <h2>Lab1</h2>
       <p>Найти обратную матрицу (методом присоединения единичной матрицы) и вывести матрицу невязки</p>
       <p style={{ fontStyle: 'italic', fontSize: '0.9rem' }}>
-        {'refs: Kalitkin chisl metod, '}
+        {'refs: Калиткин - Численные методы, '}
         <Link href='https://www.webmath.ru/poleznoe/formules_6_13.php'>
           https://www.webmath.ru/poleznoe/formules_6_13.php
         </Link>
@@ -69,6 +70,13 @@ const Lab1 = () => {
       <p>
         Determinant: <span style={{ fontWeight: 500 }}>{det}</span>
       </p>
+      <p>
+        Precision:{' '}
+        <span style={{ fontWeight: 500 }}>
+          10
+          <sup>{-precision}</sup>
+        </span>
+      </p>
       <Box display='flex'>
         {/* A */}
         <Matrix matrix={a} label='A' style={{ minWidth: '240px', maxWidth: '50%' }} />
@@ -86,14 +94,11 @@ const Lab1 = () => {
           <Matrix
             matrix={multiplyMatrices(invA, a)}
             label={InvM('A * A')}
-            accuracy={18}
+            precision={precision}
             style={{ minWidth: '240px', maxWidth: '50%' }}
           />
         </>
       )}
-      <Box align='right'>
-        <p>Pantaev Evgeny</p>
-      </Box>
     </main>
   )
 }
