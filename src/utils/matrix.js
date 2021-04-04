@@ -9,7 +9,7 @@ export const InvM = (matrixLabel) => {
   )
 }
 
-export const Matrix = ({ matrix, label, style, accuracy = 6, ...others }) => (
+export const Matrix = ({ matrix, label, style, precision = 6, ...others }) => (
   <Table style={style}>
     <TableHead>
       <TableRow>
@@ -23,7 +23,7 @@ export const Matrix = ({ matrix, label, style, accuracy = 6, ...others }) => (
         <TableRow>
           {row.map((el) => (
             <TableCell align='center' style={{ border: 'none' }}>
-              {typeof el === 'number' ? +el.toFixed(accuracy) : el}
+              {typeof el === 'number' ? +el.toFixed(precision) : el}
             </TableCell>
           ))}
         </TableRow>
@@ -98,4 +98,39 @@ export const inverseMatrix = (m) => {
   }
   console.log(tmp)
   return tmp.map((row) => row.slice(m.length))
+}
+
+export const addMatrices = (a, b) => a.map((row, i) => row.map((el, j) => el + b[i][j]))
+export const subMatrices = (a, b) => a.map((row, i) => row.map((el, j) => el - b[i][j]))
+
+export const yacobi = (a, b, precision = 10, x0 = Array.from({ length: a.length }, () => 0)) => {
+  const d = a.map((row, i) => row.map((el, j) => (i === j ? el : 0)))
+  const lu = a.map((row, i) => row.map((el, j) => (i !== j ? el : 0)))
+  console.log(d)
+  console.log(lu)
+  console.log(addMatrices(d, lu))
+  console.log(x0)
+  const xi = [x0]
+
+  let iterator = 0
+  let norm
+  do {
+    let tempX = []
+    for (let i = 0; i < a.length; i++) {
+      tempX.push(b[i][0])
+      for (let j = 0; j < a.length; j++) {
+        if (i !== j) {
+          tempX[i] -= a[i][j] * xi[iterator][j]
+        }
+      }
+      tempX[i] /= a[i][i]
+    }
+
+    norm = Math.max(...xi[iterator].map((el, i) => Math.abs(el - tempX[i])))
+    //console.log(iterator, norm, Math.pow(10, -precision), norm > Math.pow(10, -precision))
+    xi.push(tempX)
+    iterator++
+  } while (norm > Math.pow(10, -precision) && iterator < 10000)
+  console.log(iterator, xi)
+  return xi[xi.length - 1].map((el) => [el])
 }
