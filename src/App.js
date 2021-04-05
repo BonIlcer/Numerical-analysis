@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Lab1 from './pages/Lab1'
 import Lab2 from './pages/Lab2'
+import Lab3 from './pages/Lab3'
 import Navbar from './components/Navbar'
 import { Box } from '@material-ui/core'
 
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route path='/lab2'>
             <Lab2 />
+          </Route>
+          <Route path='/lab3'>
+            <Lab3 />
           </Route>
         </Switch>
         <Box align='right' p={2} pb={1}>
