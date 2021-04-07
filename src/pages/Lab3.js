@@ -56,7 +56,7 @@ const Lab1 = () => {
       <p>
         Function:{' '}
         <span style={{ fontWeight: 500 }}>
-          4 * x <sup>3</sup> + 2 * x <sup>2</sup> + 4 * x - 2 = 0
+          4x <sup>3</sup> + 2x <sup>2</sup> + 4x - 2 = 0
         </span>
       </p>
       <p>
