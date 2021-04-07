@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, Link } from '@material-ui/core'
+import { Box, Button, Divider, Link } from '@material-ui/core'
 import { determinant, inverseMatrix, multiplyMatrices, Matrix, InvM } from '../utils/matrix'
 import { parseMatrix } from '../utils/parseMatrix'
 
@@ -55,6 +55,7 @@ const Lab1 = () => {
           https://www.webmath.ru/poleznoe/formules_6_13.php
         </Link>
       </p>
+      <Divider style={{ margin: '16px 0' }} />
       <Button style={{ marginRight: '24px' }} onClick={() => calculate()}>
         Calculate
       </Button>

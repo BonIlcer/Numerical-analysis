@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Link } from '@material-ui/core'
+import { Button, Divider, Link } from '@material-ui/core'
 
 const func = (x) => 4 * x ** 3 + 2 * x ** 2 + 4 * x - 2
 
@@ -48,6 +48,7 @@ const Lab1 = () => {
         {'refs: '}
         <Link href='https://studfile.net/preview/5514229/page:3/'>https://studfile.net/preview/5514229/page:3/</Link>
       </p>
+      <Divider style={{ margin: '16px 0' }} />
       <Button style={{ marginRight: '24px' }} onClick={() => calculate()}>
         Calculate
       </Button>
@@ -55,7 +56,7 @@ const Lab1 = () => {
       <p>
         Function:{' '}
         <span style={{ fontWeight: 500 }}>
-          4 * x <sup>3</sup> + 2 * x <sup>2</sup> + 4 * x - 2
+          4 * x <sup>3</sup> + 2 * x <sup>2</sup> + 4 * x - 2 = 0
         </span>
       </p>
       <p>

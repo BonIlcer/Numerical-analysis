@@ -19,8 +19,8 @@ export const Matrix = ({ matrix, label, style, precision = 6, ...others }) => (
       </TableRow>
     </TableHead>
     <TableBody>
-      {matrix.map((row) => (
-        <TableRow>
+      {matrix.map((row, i) => (
+        <TableRow key={i}>
           {row.map((el) => (
             <TableCell align='center' style={{ border: 'none' }}>
               {typeof el === 'number' ? +el.toFixed(precision) : el}
