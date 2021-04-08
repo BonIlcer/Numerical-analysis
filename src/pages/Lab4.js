@@ -4,6 +4,7 @@ import { DataGrid } from '@material-ui/data-grid'
 import { Line } from 'react-chartjs-2'
 import { useEffect } from 'react'
 import { cubicSpline } from '../utils/cubicSpline'
+import { spline } from '../utils/worker'
 
 const func = (x) => Math.sin(x)
 
@@ -110,15 +111,17 @@ const Lab1 = () => {
 
   const [xPoints, step] = splitRange(range[0], range[1], partsCount)
   const extendedXPoints = extendRangePoints(xPoints, step, scale)
-  const extendedYPoints = extendedXPoints.map((el) => func(el))
+  const extendedYPoints = extendedXPoints.map((x) => func(x))
 
   const lagrangeXControlPoints = getControlPoints(xPoints, pointsCount)
   const lagrangeYControlPoints = lagrangeXControlPoints.map((v) => func(v))
-  const lagrangeYPoints = extendedXPoints.map((el) => lagrange(lagrangeXControlPoints, lagrangeYControlPoints, el))
+  const lagrangeYPoints = extendedXPoints.map((x) => lagrange(lagrangeXControlPoints, lagrangeYControlPoints, x))
 
   const splineXControlPoints = getSplineControlPoints(xPoints, pointsCount)
   const splineYControlPoints = splineXControlPoints.map((v) => func(v))
-  const splineYPoints = cubicSpline(splineXControlPoints, splineYControlPoints, extendedXPoints)
+  // const splineYPoints = cubicSpline(splineXControlPoints, splineYControlPoints, extendedXPoints)
+  // const splineYPoints = cubicSpline(lagrangeXControlPoints, lagrangeYControlPoints, extendedXPoints)
+  const splineYPoints = extendedXPoints.map((x) => spline(x, extendedXPoints, extendedYPoints))
 
   const controlPointsRows = lagrangeXControlPoints.map((el, i) => {
     return { id: i + 1, x: el, y: lagrangeYControlPoints[i] }
