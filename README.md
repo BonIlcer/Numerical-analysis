@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Demo
 [Online demo](https://reverent-goldberg-5a069e.netlify.app/) is available!
-![Preview](https://imgur.com/a/VpMBDTG.png)
+![Preview](https://imgur.com/a/VpMBDTG)
 
 ## Available Scripts
 
