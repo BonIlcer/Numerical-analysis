@@ -3,8 +3,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Demo
-[Online demo](https://friendly-goldberg-ef933b.netlify.app/) is available!
-![Preview](https://i.imgur.com/WQd4dF4.png)
+[Online demo](https://reverent-goldberg-5a069e.netlify.app/) is available!
+![Preview](https://imgur.com/a/VpMBDTG.png)
 
 ## Available Scripts
 
